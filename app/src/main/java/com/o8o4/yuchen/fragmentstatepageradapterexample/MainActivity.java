@@ -1,17 +1,41 @@
 package com.o8o4.yuchen.fragmentstatepageradapterexample;
 
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+public class MainActivity extends FragmentActivity {
 
-public class MainActivity extends ActionBarActivity {
+    MyAdapter mAdapter;
+    ViewPager mPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_pager);
+
+        mAdapter = new MyAdapter(getSupportFragmentManager());
+
+        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager.setAdapter(mAdapter);
+
+        Button button = (Button)findViewById(R.id.goto_first);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mPager.setCurrentItem(0);
+            }
+        });
+        button = (Button)findViewById(R.id.goto_last);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mPager.setCurrentItem(mAdapter.getCount() - 1);
+            }
+        });
     }
 
     @Override
