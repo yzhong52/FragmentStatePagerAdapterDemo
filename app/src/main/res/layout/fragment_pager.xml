@@ -21,6 +21,12 @@
             android:text="First">
         </Button>
 
+        <!--Delete the current page-->
+        <Button android:id="@+id/delete_current"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Delete">
+        </Button>
+
         <!--go to the last page in the view pager-->
         <Button android:id="@+id/goto_last"
             android:layout_width="wrap_content" android:layout_height="wrap_content"

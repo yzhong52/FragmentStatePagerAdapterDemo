@@ -2,4 +2,6 @@
 
 Android Studio example of `ViewPager` with `FragmentStatePagerAdapter`. 
 
-![screenshoot](screenshoot.png "screenshoot")
+<center>
+<img src="screenshoot.png" width="50%">
+</center>

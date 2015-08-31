@@ -30,6 +30,13 @@ public class MainActivity extends FragmentActivity {
                 mPager.setCurrentItem(0);
             }
         });
+        button = (Button)findViewById(R.id.delete_current);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAdapter.deletePage(mPager.getCurrentItem());
+            }
+        });
         button = (Button)findViewById(R.id.goto_last);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
