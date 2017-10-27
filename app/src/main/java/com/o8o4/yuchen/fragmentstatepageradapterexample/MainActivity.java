@@ -21,24 +21,23 @@ public class MainActivity extends FragmentActivity {
 
         mAdapter = new MyAdapter(getSupportFragmentManager());
 
-        mPager = (ViewPager)findViewById(R.id.pager);
+        mPager = findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 
-        Button button = (Button)findViewById(R.id.goto_first);
-        button.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.goto_first).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mPager.setCurrentItem(0);
             }
         });
-        button = (Button)findViewById(R.id.delete_current);
-        button.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.delete_current).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAdapter.deletePage(mPager.getCurrentItem());
+                if (mAdapter.canDelete()) {
+                    mAdapter.deletePage(mPager.getCurrentItem());
+                }
             }
         });
-        button = (Button)findViewById(R.id.goto_last);
-        button.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.goto_last).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mPager.setCurrentItem(mAdapter.getCount() - 1);
             }
