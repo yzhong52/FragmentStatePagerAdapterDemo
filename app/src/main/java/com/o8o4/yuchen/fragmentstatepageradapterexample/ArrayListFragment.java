@@ -10,9 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/**
- * Created by yuchen on 15-08-30.
- */
 public class ArrayListFragment extends ListFragment {
     int mNum;
 
@@ -52,7 +49,7 @@ public class ArrayListFragment extends ListFragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_pager_list, container, false);
         View tv = v.findViewById(R.id.text);
-        ((TextView)tv).setText("Fragment #" + mNum);
+        ((TextView)tv).setText(String.format(getString(R.string.fragment_number), mNum));
         return v;
     }
 
