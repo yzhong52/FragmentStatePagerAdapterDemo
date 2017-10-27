@@ -7,20 +7,17 @@ import android.support.v4.view.PagerAdapter;
 
 import java.util.ArrayList;
 
-/**
- * Created by yuchen on 15-08-30.
- */
 public class MyAdapter extends FragmentStatePagerAdapter
 {
-    static final int NUM_ITEMS = 10;
+    private static final int NUM_ITEMS = 10;
     private ArrayList<Integer> page_indexes;
 
-    public MyAdapter(FragmentManager fm) {
+    MyAdapter(FragmentManager fm) {
         super(fm);
 
         page_indexes = new ArrayList<>();
         for (int i = 0; i < NUM_ITEMS; i++) {
-            page_indexes.add(new Integer(i));
+            page_indexes.add(i);
         }
     }
 
@@ -32,13 +29,18 @@ public class MyAdapter extends FragmentStatePagerAdapter
     @Override
     public Fragment getItem(int position) {
         Integer index = page_indexes.get(position);
-        return ArrayListFragment.newInstance(index.intValue());
+        return ArrayListFragment.newInstance(index);
     }
 
-    public void deletePage(int position)
-    {
-        page_indexes.remove(position);
-        notifyDataSetChanged();
+    void deletePage(int position) {
+        if (canDelete()) {
+            page_indexes.remove(position);
+            notifyDataSetChanged();
+        }
+    }
+
+    boolean canDelete() {
+        return page_indexes.size() > 0;
     }
 
     // This is called when notifyDataSetChanged() is called
